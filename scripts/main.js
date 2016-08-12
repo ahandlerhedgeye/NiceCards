@@ -11,11 +11,11 @@ $.ajax({
         xhr.setRequestHeader('X-TrackerToken', token);
     },
     success: function success(data) {
-        let html = '' ;
+        let html = "" ;
         console.log(data)
         for(let story of data) {
           html += `
-          <div class="mb3 fl-l fl-m fn mh2 mh3 bg-near-white mw5 pa3 card tc black-80 shadow-5 ">
+          <div class="mb3 mh2 mh3 bg-near-white mw5 miw-16 pa3 card tc black-80 shadow-5 ">
             <h1 class=" bb b--gray  pb2 f6 ttu tracked lh-title">${story.name}</h1>
             <div class="meta">
               <p>${story.current_state}</p>
@@ -31,6 +31,7 @@ $.ajax({
               <a class="btn btn--s btn--gray-dark" href="${story.url}">More Details</a>
             </div>
           </div>
+          </div>
           `
         }
         $("#main").html(html)
@@ -41,7 +42,7 @@ function printLables(arr) {
   let html = '' ;
   for (let lable of arr){
     html += `
-      <small class="small-caps dib pa2 b--near-black bw2 shadow-2 br1 lable">${lable.name}</small>
+      <small class="small-caps dib mb3 pa2 b--near-black bw2 shadow-2 br1 lable">${lable.name}</small>
     `
   }
   return html;

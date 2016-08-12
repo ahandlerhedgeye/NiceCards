@@ -200,3 +200,18 @@
 @media screen and (min-width: 32em) {
  .btn--full {
    max-width: 16em !important; } }
+
+
+/* Loader gif */
+.loader{
+  width: 126px;
+  margin: 0 auto;
+}
+.loader img{
+  width: 100%;
+  height: auto;
+}
+
+.miw-16{
+  min-width: 16rem;
+}
