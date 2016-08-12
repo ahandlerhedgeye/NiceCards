@@ -50,4 +50,4 @@ function printLables(arr) {
 
 
 
-$('.time').html(time.timeGreeting())
+$('.time').html(time.timeGreeting());
