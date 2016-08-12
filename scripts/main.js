@@ -15,20 +15,20 @@ $.ajax({
         console.log(data)
         for(let story of data) {
           html += `
-          <div class=" fl w-100 w-50-ns card tc black-80 bg-transparent shadow-5 ">
-            <h1 class="f3 lh-title">${story.name}</h1>
+          <div class="mb3 fl-l fl-m fn mh2 mh3 bg-near-white mw5 pa3 card tc black-80 shadow-5 ">
+            <h1 class=" bb b--gray  pb2 f6 ttu tracked lh-title">${story.name}</h1>
             <div class="meta">
               <p>${story.current_state}</p>
               <div class="">
                 ${printLables(story.labels)}
               </div>
             </div>
-            <h3 class="f5 lh-copy">
+            <p class=" truncate lh-copy">
               ${story.description === undefined ?
               `Sorry, no description given` : story.description }
-            </h3>
+            </p>
             <div>
-              <a class="link" href="${story.url}">link here</a>
+              <a class="btn btn--s btn--gray-dark" href="${story.url}">More Details</a>
             </div>
           </div>
           `
@@ -41,7 +41,7 @@ function printLables(arr) {
   let html = '' ;
   for (let lable of arr){
     html += `
-      <p class="small-caps dib pa2 b--near-black bw2 shadow-2 br1 lable">${lable.name}</p>
+      <small class="small-caps dib pa2 b--near-black bw2 shadow-2 br1 lable">${lable.name}</small>
     `
   }
   return html;
