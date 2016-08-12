@@ -5,8 +5,19 @@ module.exports = {
 
         if (time < 12) {
             return "Good Morning"
-        } else {
+        } else if (time >= 12 && time <= 17) {
             return "Good Afternoon"
+        } else {
+          return 'Good Evening'
         }
+    },
+    timeColor : function () {
+      if(this.timeGreeting() === "Good Morning"){
+        return 'yellow'
+      } else if (this.timeGreeting() === 'Good Afternoon'){
+        return 'orange'
+      } else {
+        return 'navy'
+      }
     }
 }
