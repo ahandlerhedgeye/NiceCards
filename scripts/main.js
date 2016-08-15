@@ -1,6 +1,7 @@
 import $ from "jquery";
 import time from './time.js'
 import loadCards from './load-cards.js'
+import secret from './secret.js'
 
 $('.time').html(time.timeGreeting()).addClass(time.timeColor());
 
