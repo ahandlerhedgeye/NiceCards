@@ -2,9 +2,9 @@ import $ from "jquery";
 import time from './time.js'
 import loadCards from './load-cards.js'
 
-loadCards("started,unscheduled,unstarted,finished,delivered")
-
 $('.time').html(time.timeGreeting()).addClass(time.timeColor());
+
+loadCards("started,unscheduled,unstarted,finished,delivered")
 
 $('.js-filter').on('click', function (e){
   e.preventDefault();
