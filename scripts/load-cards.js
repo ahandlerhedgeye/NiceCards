@@ -2,10 +2,6 @@ import $ from "jquery";
 import secret from "./secret.js"
 import printLables from "./print-labels.js"
 
-function printStats (data) {
-
-}
-
 function loadCards (filter) {
 let url = `https://www.pivotaltracker.com/services/v5/projects/${secret.projectId}/stories?filter=owner:ah+state:${filter}`
 $.ajax({
