@@ -3,8 +3,11 @@ import token from "./secret.js"
 import time from './time.js'
 
 const projectId = "414867"
-const url = `https://www.pivotaltracker.com/services/v5/projects/${projectId}/stories?filter=owner:ah+state:started,unscheduled,unstarted,started,finished,delivered`
 
+loadCards("started,unscheduled,unstarted,finished,delivered")
+
+function loadCards (filter) {
+let url = `https://www.pivotaltracker.com/services/v5/projects/${projectId}/stories?filter=owner:ah+state:${filter}`
 $.ajax({
     url: url,
     beforeSend: function beforeSend(xhr) {
@@ -12,7 +15,6 @@ $.ajax({
     },
     success: function success(data) {
         let html = "" ;
-        console.log(data)
         for(let story of data) {
           html += `
           <div class="mb3 mh2 mh3 bg-near-white mw5 miw-16 pa3 card tc black-80 shadow-5 ">
@@ -37,6 +39,7 @@ $.ajax({
         $("#main").html(html)
     }
 });
+}
 
 function printLables(arr) {
   let html = '' ;
@@ -48,6 +51,11 @@ function printLables(arr) {
   return html;
 }
 
+$('.time').html(time.timeGreeting()).addClass(time.timeColor());
 
-
-$('.time').html(time.timeGreeting())
+$('.js-filter').on('click', function (e){
+  e.preventDefault();
+  let filter;
+  $(this).text().toLowerCase() === "all" ? filter = "started,unscheduled,unstarted,finished,delivered" : filter = $(this).text();
+  loadCards(filter)
+})
