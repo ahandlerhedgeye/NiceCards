@@ -3,6 +3,7 @@ import $ from "jquery";
 
 function loadDash () {
   let url = `https://www.pivotaltracker.com/services/v5/projects/${secret.projectId}/stories?filter=owner:ah+state:started,unscheduled,unstarted,finished,delivered`
+  let url2 = `https://www.pivotaltracker.com/services/v5/projects/${secret.projectId}/releases?offset=-1`
   $.ajax({
       url: url,
       beforeSend: function beforeSend(xhr) {
@@ -21,6 +22,18 @@ function loadDash () {
           }
         }
         $('.points').html(estimate)
+
+        $.ajax({
+            url: url2,
+            beforeSend: function beforeSend(xhr) {
+                xhr.setRequestHeader('X-TrackerToken', secret.apiToken);
+            },
+            success: function success(data) {
+              let currentSprint = data[0]
+              let niceDate = currentSprint.deadline.split("T")[0].split("2016-")[1] //brute forcey
+              $('.finishedDate').html(niceDate)
+            }
+          });
       }
  });
 

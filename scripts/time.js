@@ -17,7 +17,7 @@ module.exports = {
       } else if (this.timeGreeting() === 'Good Afternoon'){
         return 'orange'
       } else {
-        return 'navy'
+        return 'dark-blue'
       }
     }
 }
